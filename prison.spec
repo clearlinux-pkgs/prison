@@ -6,7 +6,7 @@
 #
 Name     : prison
 Version  : 5.49.0
-Release  : 2
+Release  : 3
 URL      : https://download.kde.org/stable/frameworks/5.49/prison-5.49.0.tar.xz
 Source0  : https://download.kde.org/stable/frameworks/5.49/prison-5.49.0.tar.xz
 Source99 : https://download.kde.org/stable/frameworks/5.49/prison-5.49.0.tar.xz.sig
@@ -15,6 +15,7 @@ Group    : Development/Tools
 License  : BSD-3-Clause MIT
 Requires: prison-lib
 Requires: prison-license
+Requires: prison-data
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : qrencode-dev
@@ -24,10 +25,19 @@ BuildRequires : qtbase-dev qtbase-extras mesa-dev
 # Prison
 A barcode abstraction layer providing uniform access to generation of barcodes with data
 
+%package data
+Summary: data components for the prison package.
+Group: Data
+
+%description data
+data components for the prison package.
+
+
 %package dev
 Summary: dev components for the prison package.
 Group: Development
 Requires: prison-lib
+Requires: prison-data
 Provides: prison-devel
 
 %description dev
@@ -37,6 +47,7 @@ dev components for the prison package.
 %package lib
 Summary: lib components for the prison package.
 Group: Libraries
+Requires: prison-data
 Requires: prison-license
 
 %description lib
@@ -59,7 +70,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535167105
+export SOURCE_DATE_EPOCH=1535436497
 mkdir clr-build
 pushd clr-build
 %cmake ..
@@ -67,7 +78,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1535167105
+export SOURCE_DATE_EPOCH=1535436497
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/prison
 cp LICENSE %{buildroot}/usr/share/doc/prison/LICENSE
@@ -78,6 +89,10 @@ popd
 
 %files
 %defattr(-,root,root,-)
+
+%files data
+%defattr(-,root,root,-)
+/usr/share/xdg/prison.categories
 
 %files dev
 %defattr(-,root,root,-)
