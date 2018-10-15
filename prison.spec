@@ -5,21 +5,21 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : prison
-Version  : 5.50.0
-Release  : 4
-URL      : https://download.kde.org/stable/frameworks/5.50/prison-5.50.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.50/prison-5.50.0.tar.xz
-Source99 : https://download.kde.org/stable/frameworks/5.50/prison-5.50.0.tar.xz.sig
+Version  : 5.51.0
+Release  : 5
+URL      : https://download.kde.org/stable/frameworks/5.51/prison-5.51.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.51/prison-5.51.0.tar.xz
+Source99 : https://download.kde.org/stable/frameworks/5.51/prison-5.51.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause MIT
-Requires: prison-lib
-Requires: prison-license
-Requires: prison-data
+Requires: prison-data = %{version}-%{release}
+Requires: prison-lib = %{version}-%{release}
+Requires: prison-license = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : qrencode-dev
-BuildRequires : qtbase-dev qtbase-extras mesa-dev
+BuildRequires : qtbase-dev mesa-dev
 
 %description
 # Prison
@@ -36,9 +36,9 @@ data components for the prison package.
 %package dev
 Summary: dev components for the prison package.
 Group: Development
-Requires: prison-lib
-Requires: prison-data
-Provides: prison-devel
+Requires: prison-lib = %{version}-%{release}
+Requires: prison-data = %{version}-%{release}
+Provides: prison-devel = %{version}-%{release}
 
 %description dev
 dev components for the prison package.
@@ -47,8 +47,8 @@ dev components for the prison package.
 %package lib
 Summary: lib components for the prison package.
 Group: Libraries
-Requires: prison-data
-Requires: prison-license
+Requires: prison-data = %{version}-%{release}
+Requires: prison-license = %{version}-%{release}
 
 %description lib
 lib components for the prison package.
@@ -63,26 +63,26 @@ license components for the prison package.
 
 
 %prep
-%setup -q -n prison-5.50.0
+%setup -q -n prison-5.51.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1536437935
-mkdir clr-build
+export SOURCE_DATE_EPOCH=1539619865
+mkdir -p clr-build
 pushd clr-build
 %cmake ..
-make  %{?_smp_mflags}
+make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1536437935
+export SOURCE_DATE_EPOCH=1539619865
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/prison
-cp LICENSE %{buildroot}/usr/share/doc/prison/LICENSE
-cp cmake/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/doc/prison/cmake_COPYING-CMAKE-SCRIPTS
+mkdir -p %{buildroot}/usr/share/package-licenses/prison
+cp LICENSE %{buildroot}/usr/share/package-licenses/prison/LICENSE
+cp cmake/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/prison/cmake_COPYING-CMAKE-SCRIPTS
 pushd clr-build
 %make_install
 popd
@@ -112,11 +112,11 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5Prison.so.5
-/usr/lib64/libKF5Prison.so.5.50.0
+/usr/lib64/libKF5Prison.so.5.51.0
 /usr/lib64/qt5/qml/org/kde/prison/libprisonquickplugin.so
 /usr/lib64/qt5/qml/org/kde/prison/qmldir
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/prison/LICENSE
-/usr/share/doc/prison/cmake_COPYING-CMAKE-SCRIPTS
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/prison/LICENSE
+/usr/share/package-licenses/prison/cmake_COPYING-CMAKE-SCRIPTS
