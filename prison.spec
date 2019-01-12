@@ -5,12 +5,12 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : prison
-Version  : 5.53.0
-Release  : 10
-URL      : https://download.kde.org/stable/frameworks/5.53/prison-5.53.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.53/prison-5.53.0.tar.xz
-Source99 : https://download.kde.org/stable/frameworks/5.53/prison-5.53.0.tar.xz.sig
-Summary  : No detailed summary available
+Version  : 5.54.0
+Release  : 11
+URL      : https://download.kde.org/stable/frameworks/5.54/prison-5.54.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.54/prison-5.54.0.tar.xz
+Source99 : https://download.kde.org/stable/frameworks/5.54/prison-5.54.0.tar.xz.sig
+Summary  : A barcode API to produce QRCode barcodes and DataMatrix barcodes
 Group    : Development/Tools
 License  : BSD-3-Clause MIT
 Requires: prison-data = %{version}-%{release}
@@ -63,14 +63,14 @@ license components for the prison package.
 
 
 %prep
-%setup -q -n prison-5.53.0
+%setup -q -n prison-5.54.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1544544969
+export SOURCE_DATE_EPOCH=1547319098
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
@@ -78,7 +78,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1544544969
+export SOURCE_DATE_EPOCH=1547319098
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/prison
 cp LICENSE %{buildroot}/usr/share/package-licenses/prison/LICENSE
@@ -112,7 +112,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5Prison.so.5
-/usr/lib64/libKF5Prison.so.5.53.0
+/usr/lib64/libKF5Prison.so.5.54.0
 /usr/lib64/qt5/qml/org/kde/prison/libprisonquickplugin.so
 /usr/lib64/qt5/qml/org/kde/prison/qmldir
 
