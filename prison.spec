@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : prison
-Version  : 5.63.0
-Release  : 22
-URL      : https://download.kde.org/stable/frameworks/5.63/prison-5.63.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.63/prison-5.63.0.tar.xz
-Source1 : https://download.kde.org/stable/frameworks/5.63/prison-5.63.0.tar.xz.sig
+Version  : 5.64.0
+Release  : 23
+URL      : https://download.kde.org/stable/frameworks/5.64/prison-5.64.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.64/prison-5.64.0.tar.xz
+Source1 : https://download.kde.org/stable/frameworks/5.64/prison-5.64.0.tar.xz.sig
 Summary  : A barcode API to produce QRCode barcodes and DataMatrix barcodes
 Group    : Development/Tools
 License  : BSD-3-Clause MIT
@@ -65,14 +65,14 @@ license components for the prison package.
 
 
 %prep
-%setup -q -n prison-5.63.0
+%setup -q -n prison-5.64.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1570925012
+export SOURCE_DATE_EPOCH=1573365708
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -89,11 +89,11 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1570925012
+export SOURCE_DATE_EPOCH=1573365708
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/prison
-cp LICENSE %{buildroot}/usr/share/package-licenses/prison/LICENSE
-cp cmake/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/prison/cmake_COPYING-CMAKE-SCRIPTS
+cp %{_builddir}/prison-5.64.0/LICENSE %{buildroot}/usr/share/package-licenses/prison/31eac83f9b89a1cf6b14d0a55ea581070601be5d
+cp %{_builddir}/prison-5.64.0/cmake/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/prison/ff3ed70db4739b3c6747c7f624fe2bad70802987
 pushd clr-build
 %make_install
 popd
@@ -123,11 +123,11 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5Prison.so.5
-/usr/lib64/libKF5Prison.so.5.63.0
+/usr/lib64/libKF5Prison.so.5.64.0
 /usr/lib64/qt5/qml/org/kde/prison/libprisonquickplugin.so
 /usr/lib64/qt5/qml/org/kde/prison/qmldir
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/prison/LICENSE
-/usr/share/package-licenses/prison/cmake_COPYING-CMAKE-SCRIPTS
+/usr/share/package-licenses/prison/31eac83f9b89a1cf6b14d0a55ea581070601be5d
+/usr/share/package-licenses/prison/ff3ed70db4739b3c6747c7f624fe2bad70802987
