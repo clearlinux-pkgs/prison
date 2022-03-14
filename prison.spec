@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : prison
-Version  : 5.91.0
-Release  : 47
-URL      : https://download.kde.org/stable/frameworks/5.91/prison-5.91.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.91/prison-5.91.0.tar.xz
-Source1  : https://download.kde.org/stable/frameworks/5.91/prison-5.91.0.tar.xz.sig
+Version  : 5.92.0
+Release  : 48
+URL      : https://download.kde.org/stable/frameworks/5.92/prison-5.92.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.92/prison-5.92.0.tar.xz
+Source1  : https://download.kde.org/stable/frameworks/5.92/prison-5.92.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 MIT
@@ -64,15 +64,15 @@ license components for the prison package.
 
 
 %prep
-%setup -q -n prison-5.91.0
-cd %{_builddir}/prison-5.91.0
+%setup -q -n prison-5.92.0
+cd %{_builddir}/prison-5.92.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1644796312
+export SOURCE_DATE_EPOCH=1647274482
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -88,12 +88,12 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1644796312
+export SOURCE_DATE_EPOCH=1647274482
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/prison
-cp %{_builddir}/prison-5.91.0/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/prison/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
-cp %{_builddir}/prison-5.91.0/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/prison/82da472f6d00dc5f0a651f33ebb320aa9c7b08d0
-cp %{_builddir}/prison-5.91.0/LICENSES/MIT.txt %{buildroot}/usr/share/package-licenses/prison/a0193e3fccf86c17dc71e3f6c0ac0b535e06bea3
+cp %{_builddir}/prison-5.92.0/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/prison/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+cp %{_builddir}/prison-5.92.0/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/prison/82da472f6d00dc5f0a651f33ebb320aa9c7b08d0
+cp %{_builddir}/prison-5.92.0/LICENSES/MIT.txt %{buildroot}/usr/share/package-licenses/prison/a0193e3fccf86c17dc71e3f6c0ac0b535e06bea3
 pushd clr-build
 %make_install
 popd
@@ -108,12 +108,13 @@ popd
 
 %files dev
 %defattr(-,root,root,-)
-/usr/include/KF5/prison/AbstractBarcode
-/usr/include/KF5/prison/Prison
-/usr/include/KF5/prison/abstractbarcode.h
-/usr/include/KF5/prison/prison.h
-/usr/include/KF5/prison/prison_export.h
-/usr/include/KF5/prison/prison_version.h
+/usr/include/KF5/Prison/prison/AbstractBarcode
+/usr/include/KF5/Prison/prison/Prison
+/usr/include/KF5/Prison/prison/abstractbarcode.h
+/usr/include/KF5/Prison/prison/prison.h
+/usr/include/KF5/Prison/prison/prison_export.h
+/usr/include/KF5/Prison/prison/prison_version.h
+/usr/include/KF5/Prison/prison_version.h
 /usr/lib64/cmake/KF5Prison/KF5PrisonConfig.cmake
 /usr/lib64/cmake/KF5Prison/KF5PrisonConfigVersion.cmake
 /usr/lib64/cmake/KF5Prison/KF5PrisonTargets-relwithdebinfo.cmake
@@ -124,7 +125,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5Prison.so.5
-/usr/lib64/libKF5Prison.so.5.91.0
+/usr/lib64/libKF5Prison.so.5.92.0
 /usr/lib64/qt5/qml/org/kde/prison/libprisonquickplugin.so
 /usr/lib64/qt5/qml/org/kde/prison/qmldir
 
