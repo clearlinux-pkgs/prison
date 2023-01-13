@@ -3,7 +3,7 @@ libQt5Gui.so.5
 libQt5Multimedia.so.5
 libQt5Qml.so.5
 libQt5Quick.so.5
-libZXing.so.1
+libZXing.so.3
 libc.so.6
 libgcc_s.so.1
 libqrencode.so.4
