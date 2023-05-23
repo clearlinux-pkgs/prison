@@ -6,11 +6,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : prison
-Version  : 5.105.0
-Release  : 63
-URL      : https://download.kde.org/stable/frameworks/5.105/prison-5.105.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.105/prison-5.105.0.tar.xz
-Source1  : https://download.kde.org/stable/frameworks/5.105/prison-5.105.0.tar.xz.sig
+Version  : 5.106.0
+Release  : 64
+URL      : https://download.kde.org/stable/frameworks/5.106/prison-5.106.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.106/prison-5.106.0.tar.xz
+Source1  : https://download.kde.org/stable/frameworks/5.106/prison-5.106.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 MIT
@@ -69,39 +69,60 @@ license components for the prison package.
 
 
 %prep
-%setup -q -n prison-5.105.0
-cd %{_builddir}/prison-5.105.0
+%setup -q -n prison-5.106.0
+cd %{_builddir}/prison-5.106.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1681140396
+export SOURCE_DATE_EPOCH=1684805387
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+%cmake ..
+make  %{?_smp_mflags}
+popd
+mkdir -p clr-build-avx2
+pushd clr-build-avx2
+export GCC_IGNORE_WERROR=1
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
+export FCFLAGS="$FFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
+export FFLAGS="$FFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
+export CXXFLAGS="$CXXFLAGS -O3 -Wl,-z,x86-64-v3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd -march=x86-64-v3 "
+export CFLAGS="$CFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
+export CXXFLAGS="$CXXFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
+export FFLAGS="$FFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
+export FCFLAGS="$FCFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1681140396
+export SOURCE_DATE_EPOCH=1684805387
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/prison
 cp %{_builddir}/prison-%{version}/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/prison/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c || :
 cp %{_builddir}/prison-%{version}/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/prison/82da472f6d00dc5f0a651f33ebb320aa9c7b08d0 || :
 cp %{_builddir}/prison-%{version}/LICENSES/MIT.txt %{buildroot}/usr/share/package-licenses/prison/a0193e3fccf86c17dc71e3f6c0ac0b535e06bea3 || :
+pushd clr-build-avx2
+%make_install_v3  || :
+popd
 pushd clr-build
 %make_install
 popd
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
@@ -113,6 +134,8 @@ popd
 
 %files dev
 %defattr(-,root,root,-)
+/V3/usr/lib64/libKF5Prison.so
+/V3/usr/lib64/libKF5PrisonScanner.so
 /usr/include/KF5/Prison/Prison/AbstractBarcode
 /usr/include/KF5/Prison/Prison/Prison
 /usr/include/KF5/Prison/Prison/abstractbarcode.h
@@ -142,10 +165,16 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
+/V3/usr/lib64/libKF5Prison.so.5
+/V3/usr/lib64/libKF5Prison.so.5.106.0
+/V3/usr/lib64/libKF5PrisonScanner.so.5
+/V3/usr/lib64/libKF5PrisonScanner.so.5.106.0
+/V3/usr/lib64/qt5/qml/org/kde/prison/libprisonquickplugin.so
+/V3/usr/lib64/qt5/qml/org/kde/prison/scanner/libprisonscannerquickplugin.so
 /usr/lib64/libKF5Prison.so.5
-/usr/lib64/libKF5Prison.so.5.105.0
+/usr/lib64/libKF5Prison.so.5.106.0
 /usr/lib64/libKF5PrisonScanner.so.5
-/usr/lib64/libKF5PrisonScanner.so.5.105.0
+/usr/lib64/libKF5PrisonScanner.so.5.106.0
 /usr/lib64/qt5/qml/org/kde/prison/libprisonquickplugin.so
 /usr/lib64/qt5/qml/org/kde/prison/qmldir
 /usr/lib64/qt5/qml/org/kde/prison/scanner/libprisonscannerquickplugin.so
