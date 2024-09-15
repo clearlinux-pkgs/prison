@@ -1,68 +1,16 @@
-libKF6Prison.so.6:Prison::MeCard::parse(QString const&)
-libKF6Prison.so.6:Prison::MeCard::MeCard(Prison::MeCard&&)
-libKF6Prison.so.6:Prison::MeCard::MeCard()
-libKF6Prison.so.6:Prison::MeCard::MeCard(Prison::MeCard&&)
-libKF6Prison.so.6:Prison::MeCard::MeCard()
-libKF6Prison.so.6:Prison::MeCard::~MeCard()
-libKF6Prison.so.6:Prison::MeCard::~MeCard()
-libKF6Prison.so.6:Prison::MeCard::operator=(Prison::MeCard&&)
-libKF6Prison.so.6:Prison::Barcode::setBackgroundColor(QColor const&)
-libKF6Prison.so.6:Prison::Barcode::setForegroundColor(QColor const&)
+libKF6Prison.so.6:Prison::Barcode::Barcode(Prison::Barcode&&)
 libKF6Prison.so.6:Prison::Barcode::create(Prison::BarcodeType)
-libKF6Prison.so.6:Prison::Barcode::setData(QByteArray const&)
-libKF6Prison.so.6:Prison::Barcode::setData(QString const&)
-libKF6Prison.so.6:Prison::Barcode::toImage(QSizeF const&)
-libKF6Prison.so.6:Prison::Barcode::Barcode(Prison::Barcode&&)
-libKF6Prison.so.6:Prison::Barcode::Barcode(std::unique_ptr<Prison::AbstractBarcodePrivate, std::default_delete<Prison::AbstractBarcodePrivate> >&&)
-libKF6Prison.so.6:Prison::Barcode::Barcode(Prison::Barcode&&)
-libKF6Prison.so.6:Prison::Barcode::Barcode(std::unique_ptr<Prison::AbstractBarcodePrivate, std::default_delete<Prison::AbstractBarcodePrivate> >&&)
-libKF6Prison.so.6:Prison::Barcode::~Barcode()
-libKF6Prison.so.6:Prison::Barcode::~Barcode()
 libKF6Prison.so.6:Prison::Barcode::operator=(Prison::Barcode&&)
-libKF6Prison.so.6:Prison::MeCard::headerView() const
-libKF6Prison.so.6:Prison::MeCard::toVariantMap() const
-libKF6Prison.so.6:Prison::MeCard::value(QStringView) const
-libKF6Prison.so.6:Prison::MeCard::header() const
-libKF6Prison.so.6:Prison::MeCard::values(QStringView) const
-libKF6Prison.so.6:Prison::Barcode::dimensions() const
-libKF6Prison.so.6:Prison::Barcode::minimumSize() const
-libKF6Prison.so.6:Prison::Barcode::byteArrayData() const
-libKF6Prison.so.6:Prison::Barcode::preferredSize(double) const
-libKF6Prison.so.6:Prison::Barcode::backgroundColor() const
-libKF6Prison.so.6:Prison::Barcode::foregroundColor() const
-libKF6Prison.so.6:Prison::Barcode::data() const
-libKF6Prison.so.6:Prison::Barcode::format() const
-libKF6PrisonScanner.so.6:Prison::ScanResult::ScanResult(Prison::ScanResult const&)
-libKF6PrisonScanner.so.6:Prison::ScanResult::ScanResult()
-libKF6PrisonScanner.so.6:Prison::ScanResult::ScanResult(Prison::ScanResult const&)
+libKF6Prison.so.6:Prison::Barcode::~Barcode()
+libKF6Prison.so.6:Prison::MeCard::MeCard()
+libKF6Prison.so.6:Prison::MeCard::MeCard(Prison::MeCard&&)
+libKF6Prison.so.6:Prison::MeCard::operator=(Prison::MeCard&&)
+libKF6Prison.so.6:Prison::MeCard::~MeCard()
 libKF6PrisonScanner.so.6:Prison::ScanResult::ScanResult()
 libKF6PrisonScanner.so.6:Prison::ScanResult::~ScanResult()
-libKF6PrisonScanner.so.6:Prison::ScanResult::~ScanResult()
-libKF6PrisonScanner.so.6:Prison::ScanResult::operator=(Prison::ScanResult const&)
-libKF6PrisonScanner.so.6:Prison::ImageScanner::scan(QImage const&, QFlags<Prison::Format::BarcodeFormat>)
-libKF6PrisonScanner.so.6:Prison::VideoScanner::setFormats(QFlags<Prison::Format::BarcodeFormat>)
-libKF6PrisonScanner.so.6:Prison::VideoScanner::qt_metacall(QMetaObject::Call, int, void**)
-libKF6PrisonScanner.so.6:Prison::VideoScanner::qt_metacast(char const*)
-libKF6PrisonScanner.so.6:Prison::VideoScanner::setVideoSink(QVideoSink*)
-libKF6PrisonScanner.so.6:Prison::VideoScanner::resultChanged(Prison::ScanResult const&)
+libKF6PrisonScanner.so.6:Prison::VideoScanner::VideoScanner(QObject*)
 libKF6PrisonScanner.so.6:Prison::VideoScanner::formatsChanged()
+libKF6PrisonScanner.so.6:Prison::VideoScanner::setFormats(QFlags<Prison::Format::BarcodeFormat>)
+libKF6PrisonScanner.so.6:Prison::VideoScanner::setVideoSink(QVideoSink*)
 libKF6PrisonScanner.so.6:Prison::VideoScanner::videoSinkChanged()
-libKF6PrisonScanner.so.6:Prison::VideoScanner::resultContentChanged(Prison::ScanResult const&)
-libKF6PrisonScanner.so.6:Prison::VideoScanner::VideoScanner(QObject*)
-libKF6PrisonScanner.so.6:Prison::VideoScanner::VideoScanner(QObject*)
 libKF6PrisonScanner.so.6:Prison::VideoScanner::~VideoScanner()
-libKF6PrisonScanner.so.6:Prison::VideoScanner::~VideoScanner()
-libKF6PrisonScanner.so.6:Prison::VideoScanner::~VideoScanner()
-libKF6PrisonScanner.so.6:Prison::ScanResult::binaryData() const
-libKF6PrisonScanner.so.6:Prison::ScanResult::hasContent() const
-libKF6PrisonScanner.so.6:Prison::ScanResult::boundingRect() const
-libKF6PrisonScanner.so.6:Prison::ScanResult::hasBinaryData() const
-libKF6PrisonScanner.so.6:Prison::ScanResult::text() const
-libKF6PrisonScanner.so.6:Prison::ScanResult::format() const
-libKF6PrisonScanner.so.6:Prison::ScanResult::content() const
-libKF6PrisonScanner.so.6:Prison::ScanResult::hasText() const
-libKF6PrisonScanner.so.6:Prison::ScanResult::operator==(Prison::ScanResult const&) const
-libKF6PrisonScanner.so.6:Prison::VideoScanner::metaObject() const
-libKF6PrisonScanner.so.6:Prison::VideoScanner::result() const
-libKF6PrisonScanner.so.6:Prison::VideoScanner::formats() const
-libKF6PrisonScanner.so.6:Prison::VideoScanner::videoSink() const
